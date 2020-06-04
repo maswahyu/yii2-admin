@@ -48,6 +48,8 @@ class AdminAsset extends AssetBundle
 
     public $disableSidebar = false;
 
+    public $fontawesomeKitUrl = null;
+
     /**
      * Whether to show logged in user badge on the sidebar. Default to true.
      * @var boolean
@@ -92,4 +94,17 @@ class AdminAsset extends AssetBundle
     public $sidebarMenu = [
         ['icon' => 'fa fa-tachometer-alt', 'label' => 'Dashboard', 'url' => ['site/index']],
     ];
+
+    /**
+     * Initializes the bundle.
+     * If you override this method, make sure you call the parent implementation in the last.
+     */
+    public function init()
+    {
+        if ($this->fontawesomeKitUrl !== null) {
+            $this->js[] = $this->fontawesomeKitUrl;
+        }
+
+        parent::init();
+    }
 }
